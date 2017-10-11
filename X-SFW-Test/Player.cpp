@@ -21,6 +21,23 @@ void player::update()
 		movement.x += 1;
 	}
 
+
+
+
+	if (pos.x > 800)
+	{
+		pos.x = 0;
+	}
+	if (pos.x < 0)
+	{
+		pos.x = 800;
+	}
+	if (pos.y > 600)
+	{
+		pos.y = 0;
+	}
+
+
 	movement *= speed;
 	pos += movement;
 }
