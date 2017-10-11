@@ -49,15 +49,20 @@ vec2 normalizeVec(vec2 & vect2)
 
 float dotProd(vec2 vect2, vec2 vect2_b)
 {
-	return getMag(vect2) * getMag(vect2_b) * vectAngle(vect2, vect2_b);
+	return (vect2.x * vect2_b.x) + (vect2.y * vect2_b.y);
+	//return getMag(vect2) + getMag(vect2_b);// * vectAngle(vect2, vect2_b);
 }
 
 float vectAngle(vec2 vect2, vec2 vect2_b)
 {
-	return atan2(vect2_b.x, vect2.x) - atan2(vect2.y, vect2_b.y);
+	//note: create normalized version
+
+	return acos(dotProd(vect2, vect2_b) / (getMag(vect2) * getMag(vect2_b)));
+
+	//return atan2(vect2_b.x, vect2.x) - atan2(vect2.y, vect2_b.y);
 }
 
-float vectDist(vec2 vect2, vec2 vect2_b)
+float pointDist(vec2 vect2, vec2 vect2_b)
 {
 	return sqrt(pow(vect2_b.x - vect2.x,2) + pow(vect2_b.y - vect2.y, 2));
 }

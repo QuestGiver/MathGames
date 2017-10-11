@@ -13,7 +13,7 @@ float dotProd(vec2 vect2, vec2 vect2_b);
 //the angle between two vectors
 float vectAngle(vec2 vect2, vec2 vect2_b);
 //distance between 2 points
-float vectDist(vec2 vect2, vec2 vect2_b);
+float pointDist(vec2 vect2, vec2 vect2_b);
 //returns the perpendicular vector
 vec2 perpVect(vec2 vect2);
 //returns a a linearly blended vector between the specified
