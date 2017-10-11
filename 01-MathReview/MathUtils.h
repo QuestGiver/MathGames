@@ -25,4 +25,4 @@ float dst(point a, point b);
 float PlanePointDst( float x, float y, float z,float a, float b, float c, float d);
 float Cubezier(float t, bezier p, float l);
 //Quadratic equation in a nutshell
-point fusterCluck(float a, float b, float c);//, point &z);
+point QuadEquate(float a, float b, float c);//, point &z);

@@ -52,7 +52,7 @@ float Cubezier(float t, bezier p, float l)
 	return cube(l-t) * p.x + 3 * sqr(l-t) * t * p.y + 3 * (l-t) * sqr(t) * p.z + cube(t) * p.w;
 }
 
-point fusterCluck(float a, float b, float c)//, point z)
+point QuadEquate(float a, float b, float c)//, point z)
 {
 	point z;
 	z.x = (-b + sqrtf(sqr(b) - (4 * a * c))) / dbl(a);
