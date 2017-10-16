@@ -1,4 +1,5 @@
 #pragma once
+#include "vec2.h"
 //internal variables share mem space,
 //this is the size of the largest element, be it a struct or an array
 union vec3
@@ -8,6 +9,14 @@ union vec3
 
 	//access by individual component
 	struct { float x, y, z; };
+
+	//access to vec3 by index
+	float &operator[](size_t idx);
+	float operator[](size_t idx) const;
+
+	//access as vec2, unsafe to access "z"
+	vec2 xy;
+
 };
 
 //&lhs = left hand side and &rhs = right hand side

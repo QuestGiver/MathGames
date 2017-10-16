@@ -14,6 +14,13 @@ vec3 operator+(const vec3 & lhs, const vec3 & rhs)
 	return{ lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z };
 
 
+	//rewrite?
+
+	//for (int i = 0; i < 3; i++)
+	//{
+	//		result.v[i] = lhs.v[i] + rhs.v[i];
+	//}
+
 }
 
 vec3 & operator+=(vec3 & lhs, const vec3 & rhs)
@@ -100,4 +107,15 @@ vec3 & operator/=(const float & lhs, vec3 & rhs)
 {
 	rhs = rhs / lhs;
 	return rhs;
+}
+
+float & vec3::operator[](size_t idx)
+{
+	return v[idx];
+
+}
+
+float vec3::operator[](size_t idx) const
+{
+	return v[idx];
 }

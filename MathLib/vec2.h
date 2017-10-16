@@ -9,6 +9,12 @@ union vec2
 
 	//access by individual component
 	struct { float x, y; };
+
+	// access by unidentified index
+	float &operator[](size_t idx);
+	float operator[](size_t idx) const;
+
+
 };
 
 //&lhs = left hand side and &rhs = right hand side
