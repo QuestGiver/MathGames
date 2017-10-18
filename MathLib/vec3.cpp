@@ -1,5 +1,5 @@
 #include "vec3.h"
-
+#include "mathUtils.h"
 #include "cmath"
 #include <climits>
 #include <cfloat>
@@ -32,7 +32,7 @@ vec3 & operator+=(vec3 & lhs, const vec3 & rhs)
 bool operator==(const vec3 & lhs, const vec3 &rhs)
 {
 	//FLT_EPSILON is the smallest a float can be be
-	if (abs(lhs.x - rhs.x) < FLT_EPSILON && abs(lhs.y - rhs.y) < FLT_EPSILON && abs(lhs.z - rhs.z) < FLT_EPSILON)
+	if (abs(lhs.x - rhs.x) < EPSILON && abs(lhs.y - rhs.y) < EPSILON && abs(lhs.z - rhs.z) < FLT_EPSILON)
 	{
 		return true;
 	}

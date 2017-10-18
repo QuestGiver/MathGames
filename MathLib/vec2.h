@@ -16,6 +16,8 @@ union vec2
 
 
 };
+//#define EPSILON 0.0000001;
+
 
 //&lhs = left hand side and &rhs = right hand side
 vec2 operator+(const vec2 &lhs, const vec2 &rhs);

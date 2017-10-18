@@ -28,6 +28,8 @@ vec2 min(vec2 vect2_a,vec2 vect2_b);
 
 vec2 max(vec2 vect2_a, vec2 vect2_b);
 
+#define EPSILON 0.0000006
+
 
 
 //vec3 Items----------------------------------------------------------------------------------------

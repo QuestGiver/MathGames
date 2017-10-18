@@ -2,6 +2,7 @@
 #include "cmath"
 #include <climits>
 #include <cfloat>
+#include"mathUtils.h"
 vec2 operator+(const vec2 & lhs, const vec2 & rhs)
 {
 	//vec2 result;
@@ -24,7 +25,7 @@ vec2 & operator+=(vec2 & lhs, const vec2 & rhs)
 bool operator==(const vec2 & lhs, const vec2 &rhs)
 {
 	//FLT_EPSILON is the smallest a float can be be
-	if (abs(lhs.x - rhs.x) < FLT_EPSILON && abs(lhs.y - rhs.y) < FLT_EPSILON)
+	if (abs(lhs.x - rhs.x) < EPSILON && abs(lhs.y - rhs.y) < EPSILON)
 	{
 		return true;
 	}
