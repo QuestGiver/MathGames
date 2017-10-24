@@ -36,3 +36,8 @@ void DrawMatrix(const mat3 & t, float drawing_scale)
 
 	sfw::drawCircle(pos.x, pos.y, drawing_scale/4);
 }
+
+void DrawTexture(unsigned sprite, const mat3 & t)
+{
+	sfw::drawTextureMatrix3(sprite, 0, WHITE, t.m);
+}
