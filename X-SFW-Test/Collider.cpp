@@ -16,12 +16,12 @@ bool Collider::isColliding(vec2 a, vec2 b, float Rad1, float Rad2)
 	}
 }
 
-void Collider::colResponce(player & C1, player & C2, float R1, float R2)
+vec2 Collider::colResponce(player C1, player C2, float R1, float R2)
 {
 
 
 	float sum = R1 + R2;
-	float d = sqrt(pow(C1.position.x - C2.position.x, 2) + pow(C1.position.y - C2.position.y, 2));
+	float d = sqrt(pow(C1.position.x - C2.position.x, 2) + pow(C1.position.y - C2.position.y, 2)) + 0.0001f;
 	float x = (C2.position.x - C1.position.x) / d;
 	float y = (C2.position.y - C1.position.y) / d;
 	float p = 2 * (C1.position.x * x + C1.position.y * y - C2.position.x * x - C2.position.y * y) / (C1.speed + C2.speed);
@@ -29,8 +29,9 @@ void Collider::colResponce(player & C1, player & C2, float R1, float R2)
 	C1.accel.x = C1.position.x - p * C1.speed * x;
 	C1.accel.y = C1.position.y - p * C1.speed * y;
 
-	C2.accel.x = C2.position.x + p * C2.speed * x;
-	C2.accel.y = C2.position.y + p * C2.speed * y;
+	return C1.accel;
+	//C2.accel.x = C2.position.x + p * C2.speed * x;
+	//C2.accel.y = C2.position.y + p * C2.speed * y;
 
 }
 

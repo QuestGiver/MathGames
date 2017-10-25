@@ -53,6 +53,8 @@ int main()
 		//}
 		float t = sfw::getDeltaTime();
 
+		
+
 		myGame.update();
 		myGame.draw();
 

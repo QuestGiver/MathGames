@@ -5,6 +5,7 @@ class gameState
 {
 public:
 
+
 	Collider collider;
 	player plyr;
 	player plyr2;

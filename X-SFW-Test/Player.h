@@ -17,7 +17,10 @@ public:
 
 
 	bool button;
-
+	bool up;
+	bool down;
+	bool left;
+	bool right;
 
 
 	transform myTransform;
