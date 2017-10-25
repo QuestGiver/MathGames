@@ -1,14 +1,11 @@
-#include "sfwdraw.h"
-#include"mathUtils.h"
-#include"vec2.h"
-#include"vec3.h"
-#include "Player.h"
-#include"Transform.h"
-#include<cmath>
+
+#include"GameState.h"
 int main()
 {
 	sfw::initContext();
 	sfw::setBackgroundColor(BLACK);
+
+	gameState myGame;
 	//player me;
 
 	//me.speed = 1000 * sfw::getDeltaTime();
@@ -55,6 +52,9 @@ int main()
 		//	//myAbs[i].angle += sinf(t) + 5 + i * sfw::getDeltaTime();
 		//}
 		float t = sfw::getDeltaTime();
+
+		myGame.update();
+		myGame.draw();
 
 
 

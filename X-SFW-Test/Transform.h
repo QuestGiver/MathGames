@@ -3,6 +3,7 @@
 #include"Mat3.h"
 #include"vec2.h"
 #include"sfwdraw.h"
+#include"vec3.h"
 class transform
 {
 public:
