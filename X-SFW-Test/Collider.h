@@ -19,7 +19,7 @@ public:
 
 	bool isColliding(vec2 a, vec2 b, float Rad1, float Rad2);
 
-	vec2 colResponce(player C1, player C2, float R1, float R2);
+	void colResponce(player & C1, player & C2, float R1, float R2);
 	Collider();
 
 

@@ -7,7 +7,7 @@ player::player()
 {
 	accel = { 0,0 };
 	speed = 0;
-	rad = 10;
+	rad = 1;
 	t = 0;
 	drag = 10;
 	enabled = true;
@@ -202,7 +202,7 @@ void player::draw()
 			//sfw::drawLine(myTransform.position.x, myTransform.position.y, myVerts[i].position.x, myVerts[i].position.y, BLUE);
 			if (i < 7)
 			{
-				sfw::drawLine(myVerts[i].getGlobalPosition().x, myVerts[i].getGlobalPosition().y, myVerts[i +1].getGlobalPosition().x, myVerts[i + 1] .getGlobalPosition().y);
+				sfw::drawLine(myVerts[i].getGlobalPosition().x, myVerts[i].getGlobalPosition().y, myVerts[i +1].getGlobalPosition().x, myVerts[i + 1] .getGlobalPosition().y, BLUE);
 			}
 			else
 			{
