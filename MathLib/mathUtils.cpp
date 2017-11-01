@@ -88,6 +88,16 @@ vec2 max(vec2 vect2_a, vec2 vect2_b)
 	return{ vect2_a.x > vect2_b.x ? vect2_a.x : vect2_b.x, vect2_a.y > vect2_b.y ? vect2_a.y : vect2_b.y };
 }
 
+vec2 project(const vec2 & v, const vec2 & axis)
+{
+	return dotProd(v, axis) * axis;
+}
+
+vec2 reflect(const vec2 & v, const vec2 & axis)
+{
+	return 2 * project(v, axis) - v;
+}
+
 
 
 //Segregation line between vec2's and vec3's---------------------------------------------------------

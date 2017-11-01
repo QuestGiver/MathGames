@@ -28,6 +28,10 @@ vec2 min(vec2 vect2_a,vec2 vect2_b);
 
 vec2 max(vec2 vect2_a, vec2 vect2_b);
 
+vec2 project(const vec2 &v, const vec2 &axis);
+
+vec2 reflect(const vec2 & v, const vec2 &axis);
+
 #define EPSILON 0.0000006
 
 

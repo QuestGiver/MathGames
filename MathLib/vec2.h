@@ -52,3 +52,6 @@ vec2 &operator/=(vec2 & lhs, const float &rhs);
 
 vec2 &operator/=(const float &lhs, vec2 &rhs);
 
+
+
+

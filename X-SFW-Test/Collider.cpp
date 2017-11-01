@@ -5,7 +5,6 @@
 
 
 
-
 bool Collider::isColliding(vec2 a, vec2 b, float Rad1, float Rad2)
 {
 	vec2 c1 = a;
@@ -50,8 +49,9 @@ void Collider::colResponce(player & C1, player & C2, float R1, float R2)
 
 Collider::Collider()
 {
-	d = 0;
 }
+
+
 
 
 
@@ -109,3 +109,5 @@ Collision intersect_AABB_Circle(const AABB & A, const circle & B)
 {
 	return Collision();
 }
+
+

@@ -1,6 +1,8 @@
 #pragma once
 #include "Player.h"
 
+
+
 class Collider
 {
 	//Defaults
@@ -32,7 +34,7 @@ public:
 
 	AABB getGlobalBox(const transform & t) const
 	{
-		t.getGlobalTransform() * box;
+		return t.getGlobalTransform() * box;
 	}
 
 	//Collider(const AABB &a_box = { {0,0}, {1,1} }) : box(a_box)
@@ -57,4 +59,4 @@ Collision intersect_Circle(const circle & A, const circle & B);
 
 Collision intersect_AABB_Circle(const AABB &A, const circle &B);
 
-Collision collides(const transform & At, const Collider & Ac, const transform & Bt, const Collider & Bc)
+Collision collides(const transform & At, const Collider & Ac, const transform & Bt, const Collider & Bc);

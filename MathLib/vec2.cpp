@@ -102,6 +102,7 @@ vec2 & operator/=(const float & lhs, vec2 & rhs)
 	return rhs;
 }
 
+
 float & vec2::operator[](size_t idx)
 {
 	return v[idx];

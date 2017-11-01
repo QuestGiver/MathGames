@@ -1,6 +1,8 @@
 #pragma once
 #include"Collider.h"
-#include<cmath>
+//#include<cmath>
+
+
 class gameState
 {
 public:
@@ -12,8 +14,6 @@ public:
 	AABB parentBounds = { {0,0}, {10,10} };
 	AABB myBounds[8];
 	gameState();
-
-
 
 
 
