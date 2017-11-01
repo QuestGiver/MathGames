@@ -2,7 +2,10 @@
 
 void gameState::init()
 {
-
+	for (int i = 0; i < 8; i++)
+	{
+		myBounds[i] = { {0,0},{3,3} };
+	}
 }
 
 gameState::gameState()
@@ -19,8 +22,11 @@ void gameState::update()
 	float time2 = 0;
 	time2 += sfw::getDeltaTime();
 	float timer2 = 1;
+
+	
 	//PLayers=============================================================
 	//P1---------------------------------------------------------
+
 	if (sfw::getKey(32))
 	{
 		plyr.button = true;
@@ -143,8 +149,16 @@ void gameState::update()
 
 void gameState::draw()
 {
-	plyr.draw();
+	//plyr.draw();
 	plyr2.draw();
+	Draw(plyr.myTransform.getGlobalTransform() * parentBounds);
+
+	for (int i = 0; i < 8; i++)
+	{
+		Draw(plyr.myVerts[i].getGlobalTransform() * myBounds[i]);
+	}
+
+	sfw::drawLine(plyr.getGlobalPosition().x, plyr.getGlobalPosition().y, plyr2.getGlobalPosition().x, plyr2.getGlobalPosition().y, GREEN);
 }
 
 

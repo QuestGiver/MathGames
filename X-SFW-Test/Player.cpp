@@ -29,6 +29,8 @@ player::player()
 		myVerts[i].dimension = vec2{ 1,1 };
 	}
 
+	circ.position = myTransform.getGlobalPosition();
+	circ.radius = rad;
 
 
 }
@@ -206,7 +208,7 @@ void player::draw()
 			}
 			else
 			{
-				sfw::drawLine(myVerts[7].getGlobalPosition().x, myVerts[7].getGlobalPosition().y, myVerts[0].getGlobalPosition().x, myVerts[0].getGlobalPosition().y);
+				sfw::drawLine(myVerts[7].getGlobalPosition().x, myVerts[7].getGlobalPosition().y, myVerts[0].getGlobalPosition().x, myVerts[0].getGlobalPosition().y,BLUE);
 
 			}
 			

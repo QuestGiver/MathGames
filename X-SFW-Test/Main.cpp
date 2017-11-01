@@ -1,11 +1,18 @@
 
 #include"GameState.h"
+
+
 int main()
 {
 	sfw::initContext();
 	sfw::setBackgroundColor(BLACK);
 
 	gameState myGame;
+
+
+
+
+
 	//player me;
 
 	//me.speed = 1000 * sfw::getDeltaTime();

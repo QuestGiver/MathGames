@@ -22,6 +22,7 @@ public:
 	bool left;
 	bool right;
 
+	circle circ;
 
 	transform myTransform;
 

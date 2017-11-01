@@ -110,14 +110,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Collison.h" />
     <ClInclude Include="Mat3.h" />
     <ClInclude Include="mathUtils.h" />
+    <ClInclude Include="Shapes.h" />
     <ClInclude Include="vec2.h" />
     <ClInclude Include="vec3.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Collison.cpp" />
     <ClCompile Include="Mat3.cpp" />
     <ClCompile Include="mathUtils.cpp" />
+    <ClCompile Include="Shapes.cpp" />
     <ClCompile Include="vec2.cpp" />
     <ClCompile Include="vec3.cpp" />
   </ItemGroup>

@@ -3,7 +3,7 @@
 transform::transform()
 {
 	position = vec2{0,0};
-	dimension = vec2{0,0};
+	dimension = vec2{1,1};
 	angle = 0;
 	e_parent = nullptr;
 }
