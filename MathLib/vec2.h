@@ -24,10 +24,6 @@ vec2 operator+(const vec2 &lhs, const vec2 &rhs);
 
 vec2 &operator+=(vec2 &lhs, const vec2 &rhs);
 
-bool operator==(const vec2 &lhs, const vec2 &rhs);
-
-bool operator!=(const vec2 &lhs, const vec2 &rhs);
-
 vec2 operator-(const vec2 lhs, const vec2 rhs);
 
 vec2 operator*(const vec2 lhs, const float rhs);
@@ -40,8 +36,6 @@ vec2 operator/(const float rhs,const vec2 lhs);
 
 vec2 operator-(const vec2 &rhs);
 
-bool operator!=(const vec2 lhs, const vec2 rhs);
-
 vec2 &operator-=(vec2 &lhs, const vec2 &rhs);
 
 vec2 &operator*=(vec2 &lhs, const float &rhs);
@@ -52,6 +46,18 @@ vec2 &operator/=(vec2 & lhs, const float &rhs);
 
 vec2 &operator/=(const float &lhs, vec2 &rhs);
 
+vec2 clamp(const vec2 &a_min, const vec2 &a_val, const vec2 &a_max);
+
+vec2 snap(const vec2 &a_min, const vec2 &a_val, const vec2 &a_max);
+
+
+
+
+bool operator==(const vec2 &lhs, const vec2 &rhs);
+
+bool operator!=(const vec2 &lhs, const vec2 &rhs);
+
+bool operator!=(const vec2 lhs, const vec2 rhs);
 
 
 

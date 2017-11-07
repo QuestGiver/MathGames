@@ -32,20 +32,22 @@ vec2 project(const vec2 &v, const vec2 &axis);
 
 vec2 reflect(const vec2 & v, const vec2 &axis);
 
+float snap(float s, float v, float l);
+
 #define EPSILON 0.0000006
 
 
 
 //vec3 Items----------------------------------------------------------------------------------------
 
-
-
-
-vec3 crossProd(vec3 _A, vec3 _B );
-
 float dotProd(vec3 _A, vec3 _B);
 
 float getMag(vec3 _A);
+
+float vectAngle(vec3 _A, vec3 _B);
+
+vec3 crossProd(vec3 _A, vec3 _B );
+
 
 vec3 lerp(vec3 start, vec3 end, float percent);
 
@@ -53,11 +55,12 @@ vec3 normVec(vec3 _A);
 
 vec3 &normalizeVec(vec3 & _A);
 //the angle between two vectors
-float vectAngle(vec3 _A, vec3 _B);
 
 vec3 min(vec3 _A, vec3 _B);
 
 vec3 max(vec3 _A, vec3 _B);
+
+vec3 clamp(const vec3 &a_min, const vec3 &v, const vec3 & a_max);
 
 
 

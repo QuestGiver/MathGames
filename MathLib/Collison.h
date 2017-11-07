@@ -9,13 +9,15 @@ struct Collision
 	vec2 axis;
 };
 
+Collision intersect_Circle(const circle & A, const circle & B);
+
 Collision intersect_ID(float Amin, float Amax, float Bmin, float Bmax);
 
 Collision intersect_AABB(const AABB &A, const AABB & B);
 
 Collision intersect_Circle(const circle & A, const circle & B);
 
-Collision intersect_AABB_Circle(const AABB &A, const circle &B);
+Collision intersect_circle_AABB(const circle &A, const AABB &B);
 
 void static_resolution(vec2 &pos, vec2 & vel, const Collision & hit, float elasticity = 0.1f);
 

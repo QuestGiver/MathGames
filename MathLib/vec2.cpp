@@ -112,3 +112,14 @@ float vec2::operator[](size_t idx) const
 {
 	return v[idx];
 }
+
+vec2 clamp(const vec2 &a_min, const vec2 &a_val, const vec2 &a_max)
+{
+	return max(a_min, min(a_val, a_max));
+}
+
+vec2 snap(const vec2 &a_min, const vec2 &a_val, const vec2 &a_max)
+{
+	return vec2{ snap(a_min.x, a_val.x, a_max.x),
+		snap(a_min.y, a_val.y, a_max.y) };
+}

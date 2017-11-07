@@ -45,9 +45,12 @@ Collision intersect_Circle(const circle & A, const circle & B)
 
 }
 
-Collision intersect_AABB_Circle(const AABB & A, const circle & B)
+Collision intersect_circle_AABB(const circle &A, const AABB &B)
 {
-	return Collision();
+	vec2 cp = snap(B.min(), A.position, B.max());
+	
+
+	Collision result = intersect_Circle(A, circle{ cp,0 });
 }
 
 void static_resolution(vec2 & pos, vec2 & vel, const Collision & hit, float elasticity)

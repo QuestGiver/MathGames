@@ -98,6 +98,11 @@ vec2 reflect(const vec2 & v, const vec2 & axis)
 	return 2 * project(v, axis) - v;
 }
 
+float snap(float s, float v, float l)
+{
+	return abs(v - s) < abs(v - l) ? s : l;
+}
+
 
 
 //Segregation line between vec2's and vec3's---------------------------------------------------------
@@ -153,6 +158,19 @@ vec3 max(vec3 _A, vec3 _B)
 
 }
 
+vec3 clamp(const vec3 & a_min, const vec3 & v, const vec3 & a_max)
+{
+	vec3 ret = v;
+	//min {1,1,1};
+	//value {0,6,3};
+	//max {5,5,5};
+
+	ret = min(ret, a_max);
+	ret = max(ret, a_min);
+
+	return ret;
+
+}
 
 
 
