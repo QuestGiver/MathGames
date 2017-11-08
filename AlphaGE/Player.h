@@ -1,12 +1,18 @@
 #pragma once
-#include "Controller.h"
+//#include "Controller.h"
+
+class transform;
+class Rigidbody;
+struct circle;
+class Controller;
+
 class player// : public transform
 {
 
-	float dt;//time
+	
 
 public:
-
+	float dt;//time
 
 	float speed;// getMag(accel);
 	bool enabled;
@@ -23,17 +29,17 @@ public:
 	bool left;
 	bool right;
 
-	circle circ;
+	circle *circ;
 
 
 	
-	transform myTransform;
+	transform *myTransform;
 
-	Rigidbody rigbdy;
+	Rigidbody *rigbdy;
 
-	Controller ctrl;
+	Controller *ctrl;
 
-	transform myVerts[8];
+	transform *myVerts[8];
 
 
 

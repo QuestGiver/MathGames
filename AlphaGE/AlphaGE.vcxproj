@@ -85,7 +85,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)MathLib;$(SolutionDir)Dep\Include;$(SolutionDir)$(Platform)\$(Configuration)\</AdditionalIncludeDirectories>
     </ClCompile>
     <Lib>
-      <AdditionalDependencies>MathLib.lib</AdditionalDependencies>
+      <AdditionalDependencies>MathLib.lib;sfw.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>

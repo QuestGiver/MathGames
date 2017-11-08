@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "sfwdraw.h"
+#include "Controller.h"
 
 
 player::player()
@@ -23,19 +24,19 @@ player::player()
 	left = false;
 	right = false;
 
-	myTransform.position = vec2{ 350,400 };
-	myTransform.dimension = vec2{1,1};
-	myTransform.angle = 0;
+	myTransform->position = vec2{ 350,400 };
+	myTransform->dimension = vec2{1,1};
+	myTransform->angle = 0;
 
 	for (int i = 0; i < 8; i++)
 	{
-		myVerts[i].e_parent = &myTransform;
-		myVerts[i].position = {(float)10, (float)0};
-		myVerts[i].dimension = vec2{ 1,1 };
+		myVerts[i]->e_parent = myTransform;
+		myVerts[i]->position = {(float)10, (float)0};
+		myVerts[i]->dimension = vec2{ 1,1 };
 	}
 
-	circ.position = myTransform.getGlobalPosition();
-	circ.radius = circ.radius;
+	circ->position = myTransform->getGlobalPosition();
+	circ->radius = circ->radius;
 
 
 }
@@ -44,7 +45,7 @@ void player::update()
 {
 
 
-	rigbdy.integrate(myTransform,sfw::getDeltaTime());
+	rigbdy->integrate(*myTransform,sfw::getDeltaTime());
 
 	if (enabled)
 	{
@@ -53,14 +54,14 @@ void player::update()
 		//Misc operations===================================================
 
 		dt = sfw::getDeltaTime();
-		speed = getMag(rigbdy.acceleration);
+		speed = getMag(rigbdy->acceleration);
 
 
 		for (int i = 0; i < 8; i++)
 		{
 			//myVerts[i].e_parent = &myTransform;
-			myVerts[i].position = { (float)cos((45 * (i + 1)) * (PI / 180)), (float)sin(((45 * (i + 1)) * (PI / 180))) };
-			myVerts[i].position = myVerts[i].position * 20;
+			myVerts[i]->position = { (float)cos((45 * (i + 1)) * (PI / 180)), (float)sin(((45 * (i + 1)) * (PI / 180))) };
+			myVerts[i]->position = myVerts[i]->position * 20;
 			//myVerts[i].dimension = vec2{ 1,1 };
 		}
 
@@ -68,50 +69,50 @@ void player::update()
 		//Gravity---------------------------------------
 
 
-		rigbdy.acceleration.y -= 1500 * sfw::getDeltaTime();
+		rigbdy->acceleration.y -= 1500 * sfw::getDeltaTime();
 
 		//----------------------------------------------
 
 
 		//Bounding Boxes=====================================================
 
-		if (myTransform.position.x > 800 || myTransform.position.x < 0)
+		if (myTransform->position.x > 800 || myTransform->position.x < 0)
 		{
 			
-			rigbdy.acceleration.x = -rigbdy.acceleration.x;
+			rigbdy->acceleration.x = -rigbdy->acceleration.x;
 		}
 
-		if (myTransform.position.y > 600 || myTransform.position.y <0)
+		if (myTransform->position.y > 600 || myTransform->position.y <0)
 		{
-			rigbdy.acceleration.y = -rigbdy.acceleration.y;
+			rigbdy->acceleration.y = -rigbdy->acceleration.y;
 		}
 
-		if (myTransform.position.x > 800)
+		if (myTransform->position.x > 800)
 		{
-			myTransform.position.x = 800;
+			myTransform->position.x = 800;
 		}
 
-		if (myTransform.position.x < 0)
+		if (myTransform->position.x < 0)
 		{
-			myTransform.position.x = 0;
+			myTransform->position.x = 0;
 		}
 
-		if (myTransform.position.y > 600)
+		if (myTransform->position.y > 600)
 		{
-			myTransform.position.y = 600;
+			myTransform->position.y = 600;
 		}
 
-		if (myTransform.position.y < 0)
+		if (myTransform->position.y < 0)
 		{
-			myTransform.position.y = 0;
+			myTransform->position.y = 0;
 		}
 		
 		//player inputs======================================================
 
 
-		ctrl.poll(rigbdy, myTransform);
-		clamp({ 500,0 }, rigbdy.acceleration, { 0,500 });
-		clamp({ 500,0 }, rigbdy.velocity, { 0,500 });
+		ctrl->poll(*rigbdy, *myTransform);
+		clamp({ 500,0 }, rigbdy->acceleration, { 0,500 });
+		clamp({ 500,0 }, rigbdy->velocity, { 0,500 });
 		////mouse------------------------------------------------------
 
 
@@ -185,13 +186,13 @@ void player::draw()
 {
 	if (enabled)
 	{
-		DrawMatrix(myTransform.getGlobalTransform(), 40);
+		DrawMatrix(myTransform->getGlobalTransform(), 40);
 		
 		for (int i = 0; i < 8; i++)
 		{
 
 			//myVerts[i].position = vec2{ sinf(t * i) * i,sinf(t * i) * i };
-			DrawMatrix(myVerts[i].getGlobalTransform(), 10);
+			DrawMatrix(myVerts[i]->getGlobalTransform(), 10);
 			//myVerts[i].angle += sinf(t) + 50 * sfw::getDeltaTime();
 
 
@@ -199,11 +200,11 @@ void player::draw()
 			//sfw::drawLine(myTransform.position.x, myTransform.position.y, myVerts[i].position.x, myVerts[i].position.y, BLUE);
 			if (i < 7)
 			{
-				sfw::drawLine(myVerts[i].getGlobalPosition().x, myVerts[i].getGlobalPosition().y, myVerts[i +1].getGlobalPosition().x, myVerts[i + 1] .getGlobalPosition().y, BLUE);
+				sfw::drawLine(myVerts[i]->getGlobalPosition().x, myVerts[i]->getGlobalPosition().y, myVerts[i +1]->getGlobalPosition().x, myVerts[i + 1]->getGlobalPosition().y, BLUE);
 			}
 			else
 			{
-				sfw::drawLine(myVerts[7].getGlobalPosition().x, myVerts[7].getGlobalPosition().y, myVerts[0].getGlobalPosition().x, myVerts[0].getGlobalPosition().y,BLUE);
+				sfw::drawLine(myVerts[7]->getGlobalPosition().x, myVerts[7]->getGlobalPosition().y, myVerts[0]->getGlobalPosition().x, myVerts[0]->getGlobalPosition().y,BLUE);
 
 			}
 			

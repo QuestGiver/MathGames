@@ -1,6 +1,7 @@
 #pragma once
 #include "Player.h"
 #include "Collison.h"
+#include "Transform.h"
 
 
 class Collider
