@@ -54,6 +54,8 @@ float dotProd(vec2 vect2_a, vec2 vect2_b)
 	//return getMag(vect2) + getMag(vect2_b);// * vectAngle(vect2, vect2_b);
 }
 
+
+//Remember to convert to degrees when needed
 float vectAngle(vec2 vect2_a, vec2 vect2_b)
 {
 

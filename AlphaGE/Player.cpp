@@ -1,15 +1,20 @@
 #include "Player.h"
 #include "sfwdraw.h"
-#include"Transform.h"
 
 
 player::player()
 {
-	accel = { 0,0 };
+	//rad = 1;			|\
+	//drag = 10;		| |Depricated and subsumed, refer to header
+	//accel = { 0,0 };	|/
+
+
+
+
 	speed = 0;
-	rad = 1;
-	t = 0;
-	drag = 10;
+
+	dt = 0;
+	
 	enabled = true;
 	button = false;
 
@@ -30,24 +35,26 @@ player::player()
 	}
 
 	circ.position = myTransform.getGlobalPosition();
-	circ.radius = rad;
+	circ.radius = circ.radius;
 
 
 }
 
 void player::update()
 {
-	float increment = 40;
-	float spdLim = 500;
+
+
+	rigbdy.integrate(myTransform,sfw::getDeltaTime());
+
 	if (enabled)
 	{
+		//myTransform.angle += sin(dt) + 1;
 
 		//Misc operations===================================================
-		t = sfw::getDeltaTime();
-		speed = getMag(accel);
-		myTransform.position += accel * sfw::getDeltaTime();
 
-		myTransform.angle += sin(t) + 1;
+		dt = sfw::getDeltaTime();
+		speed = getMag(rigbdy.acceleration);
+
 
 		for (int i = 0; i < 8; i++)
 		{
@@ -57,29 +64,11 @@ void player::update()
 			//myVerts[i].dimension = vec2{ 1,1 };
 		}
 
-		//drag----------------------------------
-		if (accel.x != 0 && accel.x > 0)
-		{
-			accel.x -= drag * sfw::getDeltaTime();
-		}
-		else if (accel.x != 0 && accel.x < 0)
-		{
-			accel.x += drag * sfw::getDeltaTime();
 
-		}
-
-		if (accel.y != 0 && accel.y > 0)
-		{
-			accel.y -= drag * sfw::getDeltaTime();
-		}
-		else if(accel.y != 0 && accel.y < 0)
-		{
-			accel.y += drag * sfw::getDeltaTime();
-		}
 		//Gravity---------------------------------------
 
 
-		accel.y -= 1500 * sfw::getDeltaTime();
+		rigbdy.acceleration.y -= 1500 * sfw::getDeltaTime();
 
 		//----------------------------------------------
 
@@ -89,12 +78,12 @@ void player::update()
 		if (myTransform.position.x > 800 || myTransform.position.x < 0)
 		{
 			
-			accel.x = -accel.x;
+			rigbdy.acceleration.x = -rigbdy.acceleration.x;
 		}
 
 		if (myTransform.position.y > 600 || myTransform.position.y <0)
 		{
-			accel.y = -accel.y;
+			rigbdy.acceleration.y = -rigbdy.acceleration.y;
 		}
 
 		if (myTransform.position.x > 800)
@@ -120,64 +109,70 @@ void player::update()
 		//player inputs======================================================
 
 
-		//mouse------------------------------------------------------
-
-		if (button)
-		{
-			for (int i = 0; i < 8; i++)
-			{
-				//myVerts[i].e_parent = &myTransform;
-				myVerts[i].position = myVerts[i].position * 2;
-				increment = 300;
-				spdLim = 1500;
-				rad = 25;
-				//drag = 100;
-				//myVerts[i].dimension = vec2{ 1,1 };
-			}
-		}
-		else if(!button)
-		{
-			for (int i = 0; i < 8; i++)
-			{
-				//myVerts[i].e_parent = &myTransform;
-				myVerts[i].position = myVerts[i].position * 1;
-				spdLim = 500;
-				increment = 40;
-				rad = 10;
-				drag = speed;
-				//myVerts[i].dimension = vec2{ 1,1 };
-			}
-		}
-
-
-		//keys-------------------------------------------------------
+		ctrl.poll(rigbdy, myTransform);
+		clamp({ 500,0 }, rigbdy.acceleration, { 0,500 });
+		clamp({ 500,0 }, rigbdy.velocity, { 0,500 });
+		////mouse------------------------------------------------------
 
 
 
-		if (up == true && accel.y < spdLim)
-		{
-			accel.y += increment;
-		}
 
-		if (right == true && accel.x < spdLim)
-		{
-			accel.x += increment;
-		}
+		//if (button)
+		//{
+		//	for (int i = 0; i < 8; i++)
+		//	{
+		//		//myVerts[i].e_parent = &myTransform;
+		//		myVerts[i].position = myVerts[i].position * 2;
+		//		increment = 300;
+		//		spdLim = 1500;
+		//		rad = 25;
+		//		//drag = 100;
+		//		//myVerts[i].dimension = vec2{ 1,1 };
+		//	}
+		//}
+		//else if(!button)
+		//{
+		//	for (int i = 0; i < 8; i++)
+		//	{
+		//		//myVerts[i].e_parent = &myTransform;
+		//		myVerts[i].position = myVerts[i].position * 1;
+		//		spdLim = 500;
+		//		increment = 40;
+		//		rad = 10;
+		//		drag = speed;
+		//		//myVerts[i].dimension = vec2{ 1,1 };
+		//	}
+		//}
+
+
+		////keys-------------------------------------------------------
 
 
 
-		if (down == true && accel.y > -spdLim)
-		{
-			accel.y -= increment;
-		}
+		//if (up == true && accel.y < spdLim)
+		//{
+		//	accel.y += increment;
+		//}
 
-		if (left == true && accel.x > -spdLim)
-		{
-			accel.x -= increment;
-		}
-		//-----------------------------------------------------------
+		//if (right == true && accel.x < spdLim)
+		//{
+		//	accel.x += increment;
+		//}
 
-		//=============================================================
+
+
+		//if (down == true && accel.y > -spdLim)
+		//{
+		//	accel.y -= increment;
+		//}
+
+		//if (left == true && accel.x > -spdLim)
+		//{
+		//	accel.x -= increment;
+		//}
+		////-----------------------------------------------------------
+
+		////=============================================================
 
 		
 	}

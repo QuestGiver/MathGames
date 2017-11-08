@@ -1,5 +1,4 @@
 #pragma once
-#include "vec2.h"
 #include "Transform.h"
 #include "sfwdraw.h"
 class Sprite

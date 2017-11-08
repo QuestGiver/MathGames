@@ -24,7 +24,7 @@ struct AABB
 	vec2 extents;
 
 
-	vec2 mn() const { return position - extents; }
+	vec2 min() const { return position - extents; }
 	vec2 mx() const { return position + extents; }
 };
 

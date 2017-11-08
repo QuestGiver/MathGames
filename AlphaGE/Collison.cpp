@@ -1,5 +1,4 @@
 #include "Collison.h"
-#include "Shapes.h"
 
 Collision intersect_ID(float Amin, float Amax, float Bmin, float Bmax)
 {
@@ -15,8 +14,8 @@ Collision intersect_ID(float Amin, float Amax, float Bmin, float Bmax)
 
 Collision intersect_AABB(const AABB & A, const AABB & B)
 {
-	Collision xres = intersect_ID(A.mn().x, A.mx().x, B.mn().x, B.mx().x);
-	Collision yres = intersect_ID(A.mn().y, A.mx().y, B.mn().y, B.mx().y);
+	Collision xres = intersect_ID(A.min().x, A.max().x, B.min().x, B.max().x);
+	Collision yres = intersect_ID(A.min().y, A.max().y, B.min().y, B.max().y);
 
 	xres.axis = vec2{ 1,0 };
 	yres.axis = vec2{ 0,1 };
@@ -51,6 +50,8 @@ Collision intersect_circle_AABB(const circle &A, const AABB &B)
 	
 
 	Collision result = intersect_Circle(A, circle{ cp,0 });
+
+	return result;
 }
 
 void static_resolution(vec2 & pos, vec2 & vel, const Collision & hit, float elasticity)

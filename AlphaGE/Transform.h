@@ -1,10 +1,8 @@
 #pragma once
-#include"vec2.h"
 //#include"sfwdraw.h"
-#include"vec3.h"
 //#include"Mat3.h"
 #include"mathUtils.h"
-#include"Shape.h"
+#include"Shapes.h"
 class transform
 {
 public:

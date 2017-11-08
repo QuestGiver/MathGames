@@ -18,6 +18,15 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "X-SFW-Test", "X-SFW-Test\X-
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "The Reflection Princple", "The Reflection Princple\The Reflection Princple.vcxproj", "{0354D1E0-D39D-4DEC-93A1-B225E46163F3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E61CB959-B1D0-4561-A7AB-26F29210A220} = {E61CB959-B1D0-4561-A7AB-26F29210A220}
+		{711EC571-3DE7-45D1-A68A-98ECA0F1A259} = {711EC571-3DE7-45D1-A68A-98ECA0F1A259}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AlphaGE", "AlphaGE\AlphaGE.vcxproj", "{E61CB959-B1D0-4561-A7AB-26F29210A220}"
+	ProjectSection(ProjectDependencies) = postProject
+		{711EC571-3DE7-45D1-A68A-98ECA0F1A259} = {711EC571-3DE7-45D1-A68A-98ECA0F1A259}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +76,14 @@ Global
 		{0354D1E0-D39D-4DEC-93A1-B225E46163F3}.Release|x64.Build.0 = Release|x64
 		{0354D1E0-D39D-4DEC-93A1-B225E46163F3}.Release|x86.ActiveCfg = Release|Win32
 		{0354D1E0-D39D-4DEC-93A1-B225E46163F3}.Release|x86.Build.0 = Release|Win32
+		{E61CB959-B1D0-4561-A7AB-26F29210A220}.Debug|x64.ActiveCfg = Debug|x64
+		{E61CB959-B1D0-4561-A7AB-26F29210A220}.Debug|x64.Build.0 = Debug|x64
+		{E61CB959-B1D0-4561-A7AB-26F29210A220}.Debug|x86.ActiveCfg = Debug|Win32
+		{E61CB959-B1D0-4561-A7AB-26F29210A220}.Debug|x86.Build.0 = Debug|Win32
+		{E61CB959-B1D0-4561-A7AB-26F29210A220}.Release|x64.ActiveCfg = Release|x64
+		{E61CB959-B1D0-4561-A7AB-26F29210A220}.Release|x64.Build.0 = Release|x64
+		{E61CB959-B1D0-4561-A7AB-26F29210A220}.Release|x86.ActiveCfg = Release|Win32
+		{E61CB959-B1D0-4561-A7AB-26F29210A220}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
