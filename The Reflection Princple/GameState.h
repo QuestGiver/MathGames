@@ -8,8 +8,8 @@ public:
 	GameState();
 
 	player plyr[2];
-	AABB pannel[15];
-	player boss;
+	//AABB pannel[15];// make panel class
+	//player boss;
 
 
 	void update();

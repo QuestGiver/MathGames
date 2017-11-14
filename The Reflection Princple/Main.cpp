@@ -1,5 +1,8 @@
-#include "Player.h"
+#include "GameState.h"
 int main()
 {
-	return 0;
+	GameState myGame;
+
+	myGame.update();
+	myGame.draw();
 }
