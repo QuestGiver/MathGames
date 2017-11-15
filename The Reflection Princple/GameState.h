@@ -1,13 +1,14 @@
 #pragma once
-#include"Collider.h"
-#include"Controller.h"
 
+#include"Controller.h"
+#include "sfwdraw.h"
 class GameState
 {
 public:
 	GameState();
 
 	player plyr[2];
+	
 	//AABB pannel[15];// make panel class
 	//player boss;
 

@@ -13,7 +13,7 @@ class Collider
 	//Collision(); 
 
 
-	float d;
+
 public:
 	
 
@@ -38,10 +38,20 @@ public:
 		return t.getGlobalTransform() * box;
 	}
 
-	//Collider(const AABB &a_box = { {0,0}, {1,1} }) : box(a_box)
-	//{
+	/*AABB getGlobalBox(const transform * t) const
+	{
+		return t->getGlobalTransform() * box;
+	}*/
 
-	//}
+	Collider(const AABB &a_box = { { 0,0 },{ .5,.5 } }) : box(a_box)
+	{
+
+	}
+
+	
+
 };
 
+Collision collides(const transform &At, const Collider &Ac, const transform &Bt, const Collider &Bc);
+Collision collides(const transform *At, const Collider *Ac, const transform *Bt, const Collider *Bc);
 

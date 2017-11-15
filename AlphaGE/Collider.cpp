@@ -51,5 +51,15 @@
 //{
 //}
 
+Collision collides(const transform & At, const Collider & Ac, const transform & Bt, const Collider & Bc)
+{
+	return intersect_AABB(Ac.getGlobalBox(At), Bc.getGlobalBox(Bt));
+}
+
+Collision collides(const transform * At, const Collider * Ac, const transform * Bt, const Collider * Bc)
+{
+	return intersect_AABB(Ac->getGlobalBox(*At), Bc->getGlobalBox(*Bt));
+}
+
 
 

@@ -47,6 +47,56 @@ AABB operator*(const mat3 & M, const AABB & B)
 	return retval;
 }
 
+AABB operator*(const mat3 * M, const AABB & B)
+{
+
+	AABB retval;
+
+	vec2 TL = { B.position.x - B.extents.x, B.position.y + B.extents.y }; //TL
+	vec2 TR = B.position + B.extents; // TR
+	vec2 BL = B.position - B.extents; // BL
+	vec2 BR = { B.position.x + B.extents.x, B.position.y - B.extents.y };  // 
+
+	TR = (*M * vec3{ TR.x, TR.y,1 }).xy;
+	BL = (*M * vec3{ BL.x, BL.y,1 }).xy;
+	TL = (*M * vec3{ TL.x, TL.y,1 }).xy;
+	BR = (*M * vec3{ BR.x, BR.y,1 }).xy;
+
+
+	vec2 Mincorner = min(TR, min(BL, min(TL, BR)));
+	vec2 MaxCorner = max(TR, max(BL, max(TL, BR)));
+
+	retval.position = (Mincorner + MaxCorner) / 2;
+	retval.extents = (MaxCorner - Mincorner) / 2;
+
+	return retval;
+}
+
+AABB operator*(const mat3 & M, const AABB * B)
+{
+
+	AABB retval;
+
+	vec2 TL = { B->position.x - B->extents.x, B->position.y + B->extents.y }; //TL
+	vec2 TR = B->position + B->extents; // TR
+	vec2 BL = B->position - B->extents; // BL
+	vec2 BR = { B->position.x + B->extents.x, B->position.y - B->extents.y };  // 
+
+	TR = (M * vec3{ TR.x, TR.y,1 }).xy;
+	BL = (M * vec3{ BL.x, BL.y,1 }).xy;
+	TL = (M * vec3{ TL.x, TL.y,1 }).xy;
+	BR = (M * vec3{ BR.x, BR.y,1 }).xy;
+
+
+	vec2 Mincorner = min(TR, min(BL, min(TL, BR)));
+	vec2 MaxCorner = max(TR, max(BL, max(TL, BR)));
+
+	retval.position = (Mincorner + MaxCorner) / 2;
+	retval.extents = (MaxCorner - Mincorner) / 2;
+
+	return retval;
+}
+
 //void Draw(const AABB & A)
 //{
 //	vec2 c = A.position - A.extents; //BL

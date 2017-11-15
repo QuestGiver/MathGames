@@ -47,21 +47,36 @@ public:
 		
 
 
-		acceleration += force / mass;		
-		velocity += acceleration * dt + impulse/mass;
+		acceleration = force / mass;
+		velocity += acceleration * dt + impulse / mass;
 		T.position += velocity * dt;
-
-
+		impulse = { 0,0 };
 		force = -velocity * drag;
-		impulse = force = { 0,0 };
-		//-------------------
-
+		// angular motion (sort of)
 		angularAcceleration = torque / mass;
 		angularVelocity += angularAcceleration * dt;
 		T.angle += angularVelocity * dt;
 		torque = -angularVelocity * angularDrag;
 	}
+	//void integrate(transform *T, float dt)
+	//{
 
+
+
+	//	acceleration += force / mass;
+	//	velocity += acceleration * dt + impulse / mass;
+	//	T->position += velocity * dt;
+
+
+	//	force = -velocity * drag;
+	//	impulse = force = { 0,0 };
+	//	//-------------------
+
+	//	angularAcceleration = torque / mass;
+	//	angularVelocity += angularAcceleration * dt;
+	//	T->angle += angularVelocity * dt;
+	//	torque = -angularVelocity * angularDrag;
+	//}
 
 
 };

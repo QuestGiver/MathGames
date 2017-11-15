@@ -42,23 +42,24 @@ public:
 
 		if (p.up == true)
 		{
-			p.rigbdy->force += {0,50};
+			p.rigbdy->force += normVec(t.getGlobalTransform()[1].xy) * 200;
 		}
 
 		if (p.right == true)
 		{
-			p.rigbdy->force += { 50,0 };
+			p.rigbdy->torque += -1000;
 		}
 
 
 		if (p.down == true)
 		{
-			p.rigbdy->force += { 0,-50 };
+			p.rigbdy->force -= p.rigbdy->velocity * 5;
+			rb.torque += -rb.angularVelocity * 5;
 		}
 
 		if (p.left == true)
 		{
-			p.rigbdy->force += { -50,0 };
+			p.rigbdy->torque += 1000;
 		}
 
 		p.rigbdy->integrate(t, p.dt);

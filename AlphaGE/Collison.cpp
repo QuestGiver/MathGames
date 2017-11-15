@@ -1,5 +1,5 @@
 #include "Collison.h"
-
+#include <cmath>
 Collision intersect_ID(float Amin, float Amax, float Bmin, float Bmax)
 {
 	Collision ret;
@@ -7,8 +7,8 @@ Collision intersect_ID(float Amin, float Amax, float Bmin, float Bmax)
 	float lPD = Bmax - Amin;
 	float rPD = Amax - Bmin;
 
-	ret.penetrationDepth = min(lPD, rPD);
-	ret.penetrationDepth = copysign(1, rPD - lPD);
+	ret.penetrationDepth = fminf(lPD, rPD);
+	ret.handedness = copysign(1, rPD - lPD);
 	return ret;
 }
 
@@ -91,7 +91,7 @@ void dynamic_resolution(vec2 & Apos, vec2 & Avel, float Amass,
 	vec2 Rvel = Avel - Bvel;
 
 	float j = //impulse magnitude - the total energy applied across the normal
-	-(1 + elasticity) * dotProd(normal, normal * (1 / Amass + 1 / Bmass));
+	(1 + elasticity) * dotProd(normal, normal * (1 / Amass + 1 / Bmass));
 
 
 

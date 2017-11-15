@@ -1,10 +1,11 @@
 #pragma once
 //#include "Controller.h"
-
+//#include "collider.h"
 class transform;
 class Rigidbody;
-struct circle;
+class Collider;
 class Controller;
+
 
 class player// : public transform
 {
@@ -29,9 +30,7 @@ public:
 	bool left;
 	bool right;
 
-	circle *circ;
-
-
+	Collider *collider;
 	
 	transform *myTransform;
 
@@ -41,12 +40,12 @@ public:
 
 	transform *myVerts[8];
 
-
-
 	player();
+	~player();
 
 	void update();
 	void draw();
 };
 
 
+void doCollision(player &p1, player &p2);
