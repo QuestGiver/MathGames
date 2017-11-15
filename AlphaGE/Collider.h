@@ -16,7 +16,22 @@ class Collider
 
 public:
 	
+	AABB box;
 
+	AABB getGlobalBox(const transform & t) const
+	{
+		return t.getGlobalTransform() * box;
+	}
+
+	/*AABB getGlobalBox(const transform * t) const
+	{
+	return t->getGlobalTransform() * box;
+	}*/
+
+	Collider(const AABB &a_box = { { 0,0 },{ .5,.5 } }) : box(a_box)
+	{
+
+	}
 
 
 
@@ -31,22 +46,7 @@ public:
 
 
 	//---------------------------------------------------------------
-	AABB box;
-
-	AABB getGlobalBox(const transform & t) const
-	{
-		return t.getGlobalTransform() * box;
-	}
-
-	/*AABB getGlobalBox(const transform * t) const
-	{
-		return t->getGlobalTransform() * box;
-	}*/
-
-	Collider(const AABB &a_box = { { 0,0 },{ .5,.5 } }) : box(a_box)
-	{
-
-	}
+	
 
 	
 

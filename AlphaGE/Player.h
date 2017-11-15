@@ -30,6 +30,8 @@ public:
 	bool left;
 	bool right;
 
+	int color;
+
 	Collider *collider;
 	
 	transform *myTransform;

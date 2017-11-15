@@ -10,10 +10,14 @@ player::player()
 	//drag = 10;		| |Depricated and subsumed, refer to header
 	//accel = { 0,0 };	|/
 
+	color = GREEN;
+
 	collider = new Collider();
 
 	collider->box.extents = { 20, 20 };
 	
+	
+
 	speed = 0;
 
 	dt = 0;
@@ -115,25 +119,25 @@ void player::update()
 
 		//Bounciness is moar fun
 		//			-TA
-		if (myTransform->position.x > 800)
-		{
-			myTransform->position.x = 800;
-		}
+		//if (myTransform->position.x > 800)
+		//{
+		//	myTransform->position.x = 800;
+		//}
 
-		if (myTransform->position.x < 0)
-		{
-			myTransform->position.x = 0;
-		}
+		//if (myTransform->position.x < 0)
+		//{
+		//	myTransform->position.x = 0;
+		//}
 
-		if (myTransform->position.y > 600)
-		{
-			myTransform->position.y = 600;
-		}
+		//if (myTransform->position.y > 600)
+		//{
+		//	myTransform->position.y = 600;
+		//}
 
-		if (myTransform->position.y < 0)
-		{
-			myTransform->position.y = 0;
-		}
+		//if (myTransform->position.y < 0)
+		//{
+		//	myTransform->position.y = 0;
+		//}
 		
 		//player inputs======================================================
 
@@ -262,11 +266,11 @@ void player::draw()
 				vec2 line2;
 				line2.x = myVerts[i + 1]->getGlobalPosition().x;
 				line2.y = myVerts[i + 1]->getGlobalPosition().y;
-				sfw::drawLine(line1.x,line1.y ,line2.x ,line2.y , GREEN);
+				sfw::drawLine(line1.x,line1.y ,line2.x ,line2.y , color);
 			}
 			else
 			{
-				sfw::drawLine(myVerts[7]->getGlobalPosition().x, myVerts[7]->getGlobalPosition().y, myVerts[0]->getGlobalPosition().x, myVerts[0]->getGlobalPosition().y,GREEN);
+				sfw::drawLine(myVerts[7]->getGlobalPosition().x, myVerts[7]->getGlobalPosition().y, myVerts[0]->getGlobalPosition().x, myVerts[0]->getGlobalPosition().y,color);
 
 			}
 			

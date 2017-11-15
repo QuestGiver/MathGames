@@ -1,5 +1,6 @@
 #pragma once
 #include "Rigidbody.h"
+#include "Collider.h"
 
 class panel : public transform
 {
@@ -19,12 +20,19 @@ public:
 
 	//input variables
 
-	AABB aabb;
+	//AABB aabb;
+
+	Collider collider;
 
 	Rigidbody rigbdy;
+
+	transform panelTransform;
 
 	panel();
 
 	void update();
 	void draw();
 };
+
+
+void doCollision(player &p, panel &otherP);
